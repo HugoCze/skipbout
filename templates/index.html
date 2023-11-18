@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fight Result Predictions</title>
+    
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
     <style>
         body {
             background-color: {{ background_color }};
@@ -12,11 +16,64 @@
             text-align: center;
             padding: 50px;
         }
+
+        #navbar {
+            background-color: #111;
+            overflow: hidden;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        #pastContent {
+            float: left;
+            width: 50%;
+        }
+
+        #futureContent {
+            float: right;
+            width: 50%;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Fight Result Predictions Blog!</h1>
-    <p>This is a dark-themed greeting page for your blog.</p>
-    <p>Start exploring and make your predictions!</p>
+    <div id="navbar">
+        <a href="javascript:void(0)" onclick="showContent('past')">Past Fights</a>
+        <a href="javascript:void(0)" onclick="showContent('future')">Future Fights</a>
+    </div>
+
+    <div id="pastContent">
+        <h2>Past Fights</h2>
+        <p>Content for past fights goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div id="futureContent" style="display: none;">
+        <h2>Future Fights</h2>
+        <p>Content for future fights goes here. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <script>
+        function showContent(contentType) {
+            if (contentType === 'past') {
+                document.getElementById('pastContent').style.display = 'block';
+                document.getElementById('futureContent').style.display = 'none';
+            } else if (contentType === 'future') {
+                document.getElementById('pastContent').style.display = 'none';
+                document.getElementById('futureContent').style.display = 'block';
+            }
+        }
+    </script>
+    <!-- Additional content and scripts go here -->
 </body>
 </html>
