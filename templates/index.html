@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fight Result Predictions</title>
     
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"> -->
 
     <style>
         body {
@@ -15,19 +14,19 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
+            margin: 0; /* Remove default body margin */
         }
 
         #navbar {
-            background-color: #111;
             overflow: hidden;
+            transition: background-color 0.3s ease; /* Add transition effect for smooth color change */
         }
 
         #navbar a {
-            float: left;
-            display: block;
+            display: inline-block;
             color: #f2f2f2;
             text-align: center;
-            padding: 14px 16px;
+            padding: 16px 20px; /* Adjust padding as needed */
             text-decoration: none;
         }
 
@@ -37,20 +36,18 @@
         }
 
         #pastContent {
-            float: left;
-            width: 50%;
+            width: 100%;
         }
 
         #futureContent {
-            float: right;
-            width: 50%;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div id="navbar">
-        <a href="javascript:void(0)" onclick="showContent('past')">Past Fights</a>
-        <a href="javascript:void(0)" onclick="showContent('future')">Future Fights</a>
+        <a href="javascript:void(0)" onclick="showContent('past', '#555')">Past Fights</a>
+        <a href="javascript:void(0)" onclick="showContent('future', '#444')">Future Fights</a>
     </div>
 
     <div id="pastContent">
@@ -64,14 +61,10 @@
     </div>
 
     <script>
-        function showContent(contentType) {
-            if (contentType === 'past') {
-                document.getElementById('pastContent').style.display = 'block';
-                document.getElementById('futureContent').style.display = 'none';
-            } else if (contentType === 'future') {
-                document.getElementById('pastContent').style.display = 'none';
-                document.getElementById('futureContent').style.display = 'block';
-            }
+        function showContent(contentType, navbarColor) {
+            document.getElementById('pastContent').style.display = contentType === 'past' ? 'block' : 'none';
+            document.getElementById('futureContent').style.display = contentType === 'future' ? 'block' : 'none';
+            document.getElementById('navbar').style.backgroundColor = navbarColor; // Change navbar color
         }
     </script>
     <!-- Additional content and scripts go here -->
